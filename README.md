@@ -5,3 +5,10 @@
 这个仓库存储了一些常用软件的配置文件，它们开箱即用，下载到特定的目录就能够自动生效。
 
 快来试试吧 :heart:
+
+## 包括的配置文件
+
+- Vim
+- Oh My Posh 3
+- Jupyter Notebook
+- Neofetch
