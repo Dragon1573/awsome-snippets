@@ -9,6 +9,8 @@
 ## 包括的配置文件
 
 - Vim
+- CMake
 - Oh My Posh 3
 - Jupyter Notebook
 - Neofetch
+- WinGet
