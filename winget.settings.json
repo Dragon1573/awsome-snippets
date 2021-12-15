@@ -1,32 +1,27 @@
 {
     "$schema": "https://aka.ms/winget-settings.schema.json",
-    // 相关文档请查阅 https://aka.ms/winget-settings
     "source": {
-        // 自动更新延时
-        "autoUpdateIntervalInMinutes": 5
+        "autoUpdateIntervalInMinutes": 1
     },
     "visual": {
-        // 进度条可视化效果
         "progressBar": "rainbow"
     },
     "installBehavior": {
-        "requirements": {
+        "preferences": {
             "scope": "machine",
+            "locale": [
+                "zh-CN",
+                "zh-TW",
+                "en-US"
+            ],
             "architectures": [
                 "x64",
                 "x86"
-            ],
-            "locale": [
-                "zh-CN",
-                "zh-HK",
-                "zh-TW",
-                "en-US"
             ]
         }
     },
     "network": {
-        "downloader": "do",
-        "doProgressTimeoutInSeconds": 30
+        "downloader": "wininet"
     },
     "experimentalFeatures": {
         "dependencies": true
