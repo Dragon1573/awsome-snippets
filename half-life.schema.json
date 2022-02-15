@@ -1,67 +1,48 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "blocks": [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
         {
-            "type": "prompt",
-            "alignment": "left",
-            "segments": [
-                {
-                    "type": "path",
-                    "style": "plain",
-                    "enable_hyperlink": true,
-                    "foreground": "#87FF00",
-                    "properties": {
-                        "style": "folder",
-                        "prefix": ""
-                    }
-                },
-                {
-                    "type": "python",
-                    "style": "plain",
-                    "foreground": "#c9a6ff",
-                    "properties": {
-                        "prefix": "<#ffffff>in</> "
-                    }
-                },
-                {
-                    "type": "git",
-                    "style": "plain",
-                    "foreground": "#5FD7FF",
-                    "properties": {
-                        "prefix": "<#ffffff>on</> ",
-                        "branch_icon": "",
-                        "branch_ahead_icon": "",
-                        "branch_behind_icon": "",
-                        "branch_gone_icon": "",
-                        "branch_identical_icon": "",
-                        "commit_icon": "",
-                        "tag_icon": "",
-                        "merge_icon": "",
-                        "rebase_icon": "",
-                        "cherry_pick_icon": "",
-                        "revert_icon": "",
-                        "working_color": "#D75F00",
-                        "staging_color": "#87FF00",
-                        "local_working_icon": " ●",
-                        "local_staged_icon": " ●",
-                        "status_separator_icon": "",
-                        "display_status": true,
-                        "display_status_detail": false,
-                        "display_branch_status": false,
-                        "display_stash_count": false
-                    }
-                },
-                {
-                    "type": "text",
-                    "style": "plain",
-                    "foreground": "#D75F00",
-                    "properties": {
-                        "text": "λ",
-                        "prefix": ""
-                    }
-                }
-            ]
+          "foreground": "#87FF00",
+          "properties": {
+            "style": "folder",
+            "template": "{{ .Path }} "
+          },
+          "style": "plain",
+          "type": "path"
+        },
+        {
+          "foreground": "#c9a6ff",
+          "properties": {
+            "template": "<#ffffff>in</> {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+          },
+          "style": "plain",
+          "type": "python"
+        },
+    {
+      "type": "git",
+      "style": "plain",
+      "powerline_symbol": "\uE0B0",
+      "properties": {
+      "fetch_status": true,
+      "fetch_stash_count": true,
+      "fetch_upstream_icon": true,
+      "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uF044 {{ .WorkinString }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Change}} \uF046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}"
+      }
+    },
+        {
+          "foreground": "#D75F00",
+          "properties": {
+            "template": " λ "
+          },
+          "style": "plain",
+          "type": "text"
         }
-    ],
-    "final_space": false
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 1
 }
