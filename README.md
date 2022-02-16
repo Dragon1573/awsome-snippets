@@ -8,9 +8,12 @@
 
 ## 包括的配置文件
 
-- Vim
-- CMake
-- Oh My Posh 3
-- Jupyter Notebook
-- Neofetch
-- WinGet
+|                配置项                 |                                              路径                                               |
+| :-----------------------------------: | :---------------------------------------------------------------------------------------------: |
+|                 Conda                 |                                          `~/.condarc`                                           |
+|        Vim (with Kite Copilot)        |                                           `~/.vimrc`                                            |
+|                 CMake                 |                                 `<project_path>/CMakeLists.txt`                                 |
+|             Oh My Posh 3              |                          `~/.config/oh-my-posh3/half-life.schema.json`                          |
+|           Jupyter Notebook            |                             `~/.jupyter/jupyter_notebook_config.py`                             |
+|               Neofetch                |                                `~/.config/neofetch/config.conf`                                 |
+| Windows Package Manager (aka. Winget) | `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json` |
