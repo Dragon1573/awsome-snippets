@@ -16,4 +16,4 @@
 |             Oh My Posh 3              |                          `~/.config/oh-my-posh3/half-life.schema.json`                          |
 |           Jupyter Notebook            |                             `~/.jupyter/jupyter_notebook_config.py`                             |
 |               Neofetch                |                                `~/.config/neofetch/config.conf`                                 |
-| Windows Package Manager (aka. Winget) | `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json` |
+| Windows Package Manager<br />Preview Version (aka. Winget) | `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json` |

@@ -6,6 +6,9 @@
     "visual": {
         "progressBar": "rainbow"
     },
+    "network": {
+        "downloader": "wininet"
+    },
     "installBehavior": {
         "preferences": {
             "scope": "machine",
@@ -16,14 +19,13 @@
             ],
             "architectures": [
                 "x64",
-                "x86"
+                "x86",
+                "neutral"
             ]
         }
     },
-    "network": {
-        "downloader": "wininet"
-    },
     "experimentalFeatures": {
+        "directMSI": false,
         "dependencies": true
     }
 }
