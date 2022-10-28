@@ -6,14 +6,12 @@
 
 快来试试吧 :heart:
 
-## 包括的配置文件
+## 开箱即用的配置文件
 
-|                配置项                 |                                              路径                                               |
-| :-----------------------------------: | :---------------------------------------------------------------------------------------------: |
-|                 Conda                 |                                          `~/.condarc`                                           |
-|        Vim (with Kite Copilot)        |                                           `~/.vimrc`                                            |
-|                 CMake                 |                                 `<project_path>/CMakeLists.txt`                                 |
-|             Oh My Posh 3              |                          `~/.config/oh-my-posh3/half-life.schema.json`                          |
-|           Jupyter Notebook            |                             `~/.jupyter/jupyter_notebook_config.py`                             |
-|               Neofetch                |                                `~/.config/neofetch/config.conf`                                 |
-| Windows Package Manager<br />Preview Version (aka. Winget) | `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json` |
+- Conda: `~/.condarc`
+- Vim: `~/.vimrc`
+- CMake: `$WORKSPACE/CMakeList.txt`
+- Oh My Posh 3: `~/.config/oh-my-posh3/half-life.schema.json`
+- Jupyter Notebook: `~/.jupyter/jupyter_notebook_config.py`
+- Neofetch: `~/.config/neofetch/config.conf`
+- Winget: `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json`
