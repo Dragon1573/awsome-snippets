@@ -15,6 +15,7 @@
 - Jupyter Notebook: `~/.jupyter/jupyter_notebook_config.py`
 - Neofetch: `~/.config/neofetch/config.conf`
 - Winget: `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json`
+- Microsoft Edge Driver: `/usr/local/bin/upgrade-msedgedriver.sh`
 
 ## 手动修改的配置文件
 
