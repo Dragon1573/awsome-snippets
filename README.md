@@ -26,7 +26,7 @@
 
 ### Vim & NeoVim
 
-NeoVim 配置文件统一归档在 `nvim` 目录之下，用户将此目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
+[NeoVim](https://neovim.io/) 配置文件统一归档在 `nvim` 目录之下，用户将此目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
 
 1. 确保您的 Vim 版本在 `8.1.1719` 及以上，或者 NeoVim 版本在 `0.4.0` 以上。
 2. 确保您安装了 Nodejs 14.14 及以上版本。
@@ -37,8 +37,15 @@ NeoVim 配置文件统一归档在 `nvim` 目录之下，用户将此目录整�
 
 ### Fish
 
-Fish Shell 配置文件归档在 `fish` 目录下，用户将此目录整个下载并重命名为 `~/.config/fish/` ，即可直接使用。
+[Fish Shell](https://fishshell.com/) 配置文件归档在 `fish` 目录下，用户将此目录整个下载并重命名为 `~/.config/fish/` ，即可直接使用。
 
 ### Lazygit
 
-Lazygit 配置文件归档在 `lazygit` 目录下，用户将此目录整个下载并重命名为 `~/.config/lazygit` ，还需要安装 `git-delta` 才能使配置文件完全可用并生效。
+[Lazygit](https://github.com/jesseduffield/lazygit) 配置文件归档在 `lazygit` 目录下，用户将此目录整个下载并重命名为 `~/.config/lazygit` ，还需要安装 `git-delta` 才能使配置文件完全可用并生效。
+
+### Poetry
+
+[Python Poetry](https://python-poetry.org/) 配置文件归档在 `pypoetry` 目录下，用户将此目录整个下载并重命名为 `~/.config/pypoetry` ，还需要执行如下操作：
+
+1. 安装 Python 3.7 及以上版本
+2. 安装最新版本 Poetry

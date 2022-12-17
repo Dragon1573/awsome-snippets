@@ -1,0 +1,10 @@
+cache-dir = "/tmp/cache/pypoetry"
+
+[experimental]
+new-installer = true
+system-git-client = true
+
+[virtualenvs]
+in-project = true
+prompt = "cpy{python_version}"
+prefer-active-python = true
