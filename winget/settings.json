@@ -1,0 +1,22 @@
+{
+    "$schema": "https://aka.ms/winget-settings.schema.json",
+    // For documentation on these settings, see: https://aka.ms/winget-settings
+    "source": {
+        "autoUpdateIntervalInMinutes": 15
+    },
+    "experimentalFeatures": {
+        "dependencies": true,
+        "directMSI": true,
+        "zipInstall": true
+    },
+    "logging": {
+        "level": "info"
+    },
+    "network": {
+        "doProgressTimeoutInSeconds": 60,
+        "downloader": "do"
+    },
+    "visual": {
+        "progressBar": "accent"
+    }
+}

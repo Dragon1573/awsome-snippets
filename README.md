@@ -71,3 +71,8 @@
 1. 如果您使用的是 Linux ，请尝试安装 `python3-pip` 、 `python3-venv` 和 `python3-virtualenv`
 2. 如果您使用的是 Windows ，请尝试 `pip install -U virtualenv`
 3. 我没有使用过 macOS ，请尝试一下 Linux 的解决方案
+
+### Winget (Windows Package Manager CLI)
+
+[Winget](https://github.com/microsoft/winget-cli) 配置文件归档在 `winget` 目录下，用户将此目录下的所有文件下载到
+`%APPDATA%/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/` 目录中，即可自动加载此配置。
