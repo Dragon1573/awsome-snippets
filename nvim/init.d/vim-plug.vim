@@ -9,6 +9,8 @@ Plug 'scrooloose/nerdtree'
 autocmd VimEnter * NERDTree | wincmd p
 "  当 NERDTree 是唯一窗口的唯一侧栏时，跟着 Vim 一并提出
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"  展示隐藏的文件和目录
+let NERDTreeShowHidden=1
 
 "  缩进线（https://github.com/Yggdroot/indentLine）
 Plug 'Yggdroot/indentLine'

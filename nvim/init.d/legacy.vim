@@ -19,14 +19,18 @@ filetype indent on
 " 启用自动缩进
 set autoindent
 
-" 单位缩进长度
-set shiftwidth=2
-
 " 每个 Tab 的距离
-set tabstop=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " 自动把制表符缩进转换为空格缩进
 set expandtab
+
+" 根据文件类型设置对应的格式
+autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype xml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " 显示行号
 set number
