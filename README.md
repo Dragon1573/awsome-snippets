@@ -34,3 +34,7 @@ NeoVim 配置文件统一归档在 `nvim` 目录之下，用户将此目录整�
 4. 使用 `:CocInstall` 前缀命令安装您需要的语言插件，比如 `:CocInstall coc-pyright` 。
 
 如果您使用的是 Vim ，请将目录重命名为 `~/.vim/` 。
+
+### Fish
+
+Fish Shell 将配置文件归档在 `fish` 目录下，用户将此目录整个下载并重命名为 `~/.config/fish/` ，即可直接使用。
