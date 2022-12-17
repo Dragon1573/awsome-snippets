@@ -11,8 +11,6 @@
 安装了相应的工具之后，将下列配置文件放置于指定的位置即可开箱即用！
 
 - CMake: `<workspace_folder>/CMakeLists.txt`
-- Jupyter Notebook: `~/.jupyter/jupyter_notebook_config.py`
-- Winget: `%USERPROFILE%/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json`
 
 ## 手动修改的配置文件
 
