@@ -37,4 +37,8 @@ NeoVim 配置文件统一归档在 `nvim` 目录之下，用户将此目录整�
 
 ### Fish
 
-Fish Shell 将配置文件归档在 `fish` 目录下，用户将此目录整个下载并重命名为 `~/.config/fish/` ，即可直接使用。
+Fish Shell 配置文件归档在 `fish` 目录下，用户将此目录整个下载并重命名为 `~/.config/fish/` ，即可直接使用。
+
+### Lazygit
+
+Lazygit 配置文件归档在 `lazygit` 目录下，用户将此目录整个下载并重命名为 `~/.config/lazygit` ，还需要安装 `git-delta` 才能使配置文件完全可用并生效。
