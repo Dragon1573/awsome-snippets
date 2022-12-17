@@ -24,17 +24,6 @@
 
 ## 其他特殊的配置文件
 
-### Vim & NeoVim
-
-[NeoVim](https://neovim.io/) 配置文件统一归档在 `nvim` 目录之下，用户将此目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
-
-1. 确保您的 Vim 版本在 `8.1.1719` 及以上，或者 NeoVim 版本在 `0.4.0` 以上。
-2. 确保您安装了 Nodejs 14.14 及以上版本。
-3. 启动 Vim 或 NeoVim ，执行 `:PlugInstall`
-4. 使用 `:CocInstall` 前缀命令安装您需要的语言插件，比如 `:CocInstall coc-pyright` 。
-
-如果您使用的是 Vim ，请将目录重命名为 `~/.vim/` 。
-
 ### Fish
 
 [Fish Shell](https://fishshell.com/) 配置文件归档在 `fish` 目录下，用户将此目录整个下载并重命名为 `~/.config/fish/` ，即可直接使用。
@@ -42,6 +31,21 @@
 ### Lazygit
 
 [Lazygit](https://github.com/jesseduffield/lazygit) 配置文件归档在 `lazygit` 目录下，用户将此目录整个下载并重命名为 `~/.config/lazygit` ，还需要安装 `git-delta` 才能使配置文件完全可用并生效。
+
+### NeoVim
+
+[NeoVim](https://neovim.io/) 配置文件统一归档在 `nvim` 目录之下，用户将此目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
+
+1. 确保您的 NeoVim 版本在 `0.4.0` 以上。
+2. 确保您安装了 Nodejs 14.14 及以上版本。
+3. 启动 Vim 或 NeoVim ，执行 `:PlugInstall`
+4. 使用 `:CocInstall` 前缀命令安装您需要的语言插件，比如 `:CocInstall coc-pyright` 。
+
+### Pip
+
+[Pip](https://pip.pypa.io/en/stable/) 配置文件归档在 `pip` 目录下，用户将此目录整个下载并重命名为 `~/.config/pip/` 。确保您已经安装了 `python3-pip` 。
+
+如果您使用的是 Windows ，请将此目录重命名为 `%USERPROFILE%/pip` ，并将其中的 `pip.conf` 重命名为 `pip.ini` 。
 
 ### Poetry
 
