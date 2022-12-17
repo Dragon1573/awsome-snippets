@@ -12,7 +12,6 @@
 - CMake: `$WORKSPACE/CMakeList.txt`
 - Oh My Posh 3: `~/.config/oh-my-posh3/half-life.schema.json`
 - Jupyter Notebook: `~/.jupyter/jupyter_notebook_config.py`
-- Neofetch: `~/.config/neofetch/config.conf`
 - Winget: `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json`
 - Microsoft Edge Driver: `/usr/local/bin/upgrade-msedgedriver.sh`
 
