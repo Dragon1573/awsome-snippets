@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CURRENT_GROUPS="$(groups $USER)"
+if [[ "$CURRENT_GROUPS" == *"root"* || "$CURRENT_GROUPS" == *"sudo"* ]]; then
+  :
+else
+  echo -e "\e[031m此命令需要超级用户权限！\e[0m"
+  exit 1
+fi
+
+sudo apt update -y
+sudo apt full-upgrade -y
+sudo apt autoclean -y
+sudo apt autoremove -y
+brew update
+brew upgrade
+sudo do-release-upgrade

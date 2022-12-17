@@ -8,12 +8,12 @@
 
 ## 开箱即用的配置文件
 
-- Conda: `~/.condarc`
-- CMake: `$WORKSPACE/CMakeList.txt`
-- Oh My Posh 3: `~/.config/oh-my-posh3/half-life.schema.json`
+安装了相应的工具之后，将下列配置文件放置于指定的位置即可开箱即用！
+
+- CMake: `<workspace_folder>/CMakeLists.txt`
+- Oh My Posh 3: `%USERPROFILE%/.config/oh-my-posh3/half-life.schema.json`
 - Jupyter Notebook: `~/.jupyter/jupyter_notebook_config.py`
-- Winget: `~/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json`
-- Microsoft Edge Driver: `/usr/local/bin/upgrade-msedgedriver.sh`
+- Winget: `%USERPROFILE%/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json`
 
 ## 手动修改的配置文件
 
@@ -58,6 +58,10 @@
 
 1. 安装 Python 3.7 及以上版本
 2. 安装最新版本 Poetry
+
+### Windows Subsystem Linux 2
+
+为了方便使用 WSL2 ，我特地编写了一些小脚本用来提升工作效率。你只需要将本项目 `sbin` 目录下的所有文件下载到 `/usr/local/sbin/` 目录下，并授予 `-rwxr-xr-x` （即 `0755` ）权限即可使用。
 
 ### Virtualenv
 
