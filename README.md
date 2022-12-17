@@ -9,7 +9,6 @@
 ## 开箱即用的配置文件
 
 - Conda: `~/.condarc`
-- Vim: `~/.vimrc`
 - CMake: `$WORKSPACE/CMakeList.txt`
 - Oh My Posh 3: `~/.config/oh-my-posh3/half-life.schema.json`
 - Jupyter Notebook: `~/.jupyter/jupyter_notebook_config.py`
@@ -22,3 +21,16 @@
 这些配置文件需要与你现有的配置内容合并，它们不应该彻底替换你的配置文件内容。你可以考虑复制以下配置文件的内容，并附加在现有配置文件的末尾。
 
 - Powershell: `~/Documents/Powershell/Microsoft.PowerShell_profile.ps1`
+
+## 其他特殊的配置文件
+
+### Vim & NeoVim
+
+NeoVim 配置文件统一归档在 `nvim` 目录之下，用户将此目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
+
+1. 确保您的 Vim 版本在 `8.1.1719` 及以上，或者 NeoVim 版本在 `0.4.0` 以上。
+2. 确保您安装了 Nodejs 14.14 及以上版本。
+3. 启动 Vim 或 NeoVim ，执行 `:PlugInstall`
+4. 使用 `:CocInstall` 前缀命令安装您需要的语言插件，比如 `:CocInstall coc-pyright` 。
+
+如果您使用的是 Vim ，请将目录重命名为 `~/.vim/` 。
