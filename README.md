@@ -32,6 +32,12 @@
 
 [Lazygit](https://github.com/jesseduffield/lazygit) 配置文件归档在 `lazygit` 目录下，用户将此目录整个下载并重命名为 `~/.config/lazygit` ，还需要安装 `git-delta` 才能使配置文件完全可用并生效。
 
+### Neofetch (HyFetch)
+
+[Neofetch](https://github.com/dylanaraps/neofetch) 和 [HyFetch](https://github.com/hykilpikonna/hyfetch) 配置文件归档在 `neofetch` 目录下，它们共享相同的配置文件。
+
+将此目录整个下载并重命名为 `~/.config/neofetch` 后既可直接使用。
+
 ### NeoVim
 
 [NeoVim](https://neovim.io/) 配置文件统一归档在 `nvim` 目录之下，用户将此目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
