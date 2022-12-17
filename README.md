@@ -49,3 +49,11 @@
 
 1. 安装 Python 3.7 及以上版本
 2. 安装最新版本 Poetry
+
+### Virtualenv
+
+[Virtualenv](https://virtualenv.pypa.io/en/latest/) 配置文件归档在 `virtualenv` 目录下，用户将此目录整个下载并重命名为 `~/.config/virtualenv/`，还需要执行如下操作：
+
+1. 如果您使用的是 Linux ，请尝试安装 `python3-pip` 、 `python3-venv` 和 `python3-virtualenv`
+2. 如果您使用的是 Windows ，请尝试 `pip install -U virtualenv`
+3. 我没有使用过 macOS ，请尝试一下 Linux 的解决方案
