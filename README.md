@@ -11,7 +11,6 @@
 安装了相应的工具之后，将下列配置文件放置于指定的位置即可开箱即用！
 
 - CMake: `<workspace_folder>/CMakeLists.txt`
-- Oh My Posh 3: `%USERPROFILE%/.config/oh-my-posh3/half-life.schema.json`
 - Jupyter Notebook: `~/.jupyter/jupyter_notebook_config.py`
 - Winget: `%USERPROFILE%/AppData/Local/Packages/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe/LocalState/settings.json`
 
@@ -45,6 +44,10 @@
 2. 确保您安装了 Nodejs 14.14 及以上版本。
 3. 启动 Vim 或 NeoVim ，执行 `:PlugInstall`
 4. 使用 `:CocInstall` 前缀命令安装您需要的语言插件，比如 `:CocInstall coc-pyright` 。
+
+### Oh My Posh
+
+[Oh My Posh](https://ohmyposh.dev/) 配置文件归档在 `oh-my-posh` 目录下，用户将此目录整个下载并重命名为 `~/.config/oh-my-posh` 后，按照官方文档安装 Oh My Posh 并使用此主题文件。
 
 ### Pip
 

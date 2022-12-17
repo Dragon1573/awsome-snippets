@@ -1,0 +1,54 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "alignment": "left",
+            "segments": [
+                {
+                    "foreground": "#87FF00",
+                    "properties": {
+                        "postfix": " ",
+                        "prefix": "",
+                        "style": "folder"
+                    },
+                    "style": "plain",
+                    "template": "{{ .Path }} ",
+                    "type": "path"
+                },
+                {
+                    "foreground": "#C9A6FF",
+                    "properties": {
+                        "postfix": " ",
+                        "prefix": ""
+                    },
+                    "style": "plain",
+                    "template": "<#ffffff>in</> {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
+                    "type": "python"
+                },
+                {
+                    "powerline_symbol": "\ue0b0",
+                    "properties": {
+                        "fetch_stash_count": true,
+                        "fetch_status": true,
+                        "fetch_upstream_icon": true
+                    },
+                    "style": "plain",
+                    "template": "on {{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }}",
+                    "type": "git"
+                },
+                {
+                    "foreground": "#D75F00",
+                    "properties": {
+                        "postfix": " ",
+                        "prefix": ""
+                    },
+                    "style": "plain",
+                    "template": " λ ",
+                    "type": "text"
+                }
+            ],
+            "type": "prompt"
+        }
+    ],
+    "version": 2
+}
