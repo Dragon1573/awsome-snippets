@@ -1,4 +1,12 @@
-""" coc-nvim
+""" coc.nvim 插件设置
+
+"  需要使用 :CocInstall 手动安装如下插件
+"
+"  Shell 相关：coc-fish
+"  后端语言相关：coc-pyright coc-java coc-cmake coc-clangd
+"  前端语言相关：coc-markdownlint coc-json
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "  有些语言服务在备份文件上会有问题
 "  请查阅 https://github.com/neoclide/coc.nvim/issues/649
@@ -130,10 +138,13 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support
+" 添加 (Neo)Vim 原生状态栏支持
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" 支持自动刷新状态栏
+autocmd User CocStatusChange redrawstatus
 
 " Mappings for CoCList
 " Show all diagnostics

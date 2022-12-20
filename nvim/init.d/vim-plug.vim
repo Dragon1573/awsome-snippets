@@ -19,6 +19,11 @@ autocmd VimEnter * LeadingSpaceEnable
 "  启动 Vim 时打开缩进线显示
 autocmd VimEnter * IndentLinesEnable
 
+"  coc.nvim 的 Vim Language 支持
+"  https://github.com/neoclide/coc-neco
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
+
 "  一个基于 Nodejs 的插件，像 VSCode 一样加载扩展并提供语言服务器
 "  https://github.com/neoclide/coc.nvim
 "  使用发行分支（推荐）
@@ -26,4 +31,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "  配置文件太复杂了，单独放一个配置文件去
 source ~dragon1573/.config/nvim/init.d/vim-plugs/coc-nvim.vim
 
+"  为 NeoVim 添加 Fish Shell 语法支持
+"  https://github.com/vim-scripts/fish-syntax
+Plug 'vim-scripts/fish-syntax'
+
+"  状态栏美化（https://github.com/vim-airline/vim-airline）
+Plug 'vim-airline/vim-airline'
+"  开启 coc.nvim 集成
+let g:airline#extensions#coc#enabled = 1
+"  开启 coc.nvim 状态栏显示
+let g:airline#extensions#coc#show_coc_status = 1
+
 call plug#end()
+
+"  在 NeoVim 启动时自动安装缺失的插件
+autocmd VimEnter *
+    \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \|    PlugInstall | q
+    \| endif

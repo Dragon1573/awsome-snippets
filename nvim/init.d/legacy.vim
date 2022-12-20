@@ -35,6 +35,9 @@ autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " 显示行号
 set number
 
+" 高亮显示光标所在行
+set cul
+
 " 设置最大行宽
 set textwidth=120
 
