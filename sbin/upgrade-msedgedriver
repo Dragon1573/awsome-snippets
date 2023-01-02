@@ -4,11 +4,19 @@
 function run_upgrade {
   # 正式执行升级任务
   echo -e "\e[33m任务详情：$1 ==> $2\e[0m"
+  if [ ! -d "/opt/microsoft/msedgedriver" ]; then
+    sudo mkdir -pv /opt/microsoft/msedgedriver
+  fi
   sudo rm -rvf "/opt/microsoft/msedgedriver/*"
-  wget -O "/tmp/edgedriver_linux64.zip" \
-    "https://msedgedriver.azureedge.net/$2/edgedriver_linux64.zip"
-  unzip "/tmp/edgedriver_linux64.zip" -d "/opt/microsoft/msedgedriver/"
-  sudo rm -rvf "/tmp/edgedriver_linux64.zip"
+  if [ -f "/tmp/edgedriver_linux64_$1.zip" ]; then
+    sudo rm -rvf "/tmp/edgedriver_linux64_$1.zip"
+  fi
+  if [ ! -f "/tmp/edgedriver_linux64_$2.zip" ]; then
+    sudo wget -O "/tmp/edgedriver_linux64_$2.zip" \
+      "https://msedgedriver.azureedge.net/$2/edgedriver_linux64.zip"
+  fi
+  sudo unzip "/tmp/edgedriver_linux64_$2.zip" -d "/opt/microsoft/msedgedriver/"
+  sudo rm -rvf "/tmp/edgedriver_linux64_$2.zip"
   return $?
 }
 
@@ -23,7 +31,7 @@ fi
 
 # 检查 Edge & Driver 版本
 stable="$(microsoft-edge-stable --version 2> /dev/null | awk '{print $3}')"
-driver="$(/opt/microsoft/msedge/driver/msedgedriver --version 2> /dev/null | awk '{print $4}')"
+driver="$(/opt/microsoft/msedgedriver/msedgedriver --version 2> /dev/null | awk '{print $4}')"
 if [ -z "$stable" ]; then
   echo -e "\e[31m未安装 Microsoft Edge Stable ！"
   exit 1
