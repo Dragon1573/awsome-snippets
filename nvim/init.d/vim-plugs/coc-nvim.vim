@@ -40,11 +40,11 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-"  用 [Ctrl + Alt + L] 触发补全
-inoremap <silent><expr> <C-M-l> coc#refresh()
+"  用 [Ctrl + `] 触发补全
+inoremap <silent><expr> <C-`> coc#refresh()
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+" 使用 `[g` 和 `]g` 在代码诊断中进行导航
+" 使用 `:CocDiagnostics` 来获取所有的诊断内容
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -65,15 +65,16 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor
+" 当光标长时间位于标识符上时，自动高亮标识符及其所有的引用
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " [r + n] 重命名标识符
+" 注意此处的 <leader> 键默认是 `\`
 nmap <leader>rn <Plug>(coc-rename)
 
-" [f] 格式化选中代码
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" [fs] 格式化选中代码
+xmap <leader>fs  <Plug>(coc-format-selected)
+nmap <leader>fs  <Plug>(coc-format-select)
 
 augroup mygroup
   autocmd!
@@ -83,24 +84,28 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying code actions to the selected code block
-" Example: `<leader>aap` for current paragraph
+" 对选定的代码块执行可用的代码操作
+" 例子：`<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying code actions at the cursor position
+" 对当前光标位置执行代码操作
 nmap <leader>ac  <Plug>(coc-codeaction-cursor)
 " Remap keys for apply code actions affect whole buffer
+" 对整个文件执行代码操作
 nmap <leader>as  <Plug>(coc-codeaction-source)
-" Apply the most preferred quickfix action to fix diagnostic on the current line
+" 对当前行的错误诊断，执行最佳快速修复
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Remap keys for applying refactor code actions
+" 对整个文件进行代码重构
 nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+" 对当前选中的片段进行代码重构
 xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
-" Run the Code Lens action on the current line
+" 触发 CodeLens （代码棱镜，代码状态指示器）显示
+" 类似于 VSCode 内嵌的标识符/函数文档提示框
+" 详细信息参考 https://blog.csdn.net/Sherlock_Holmes_lv/article/details/118930564
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
@@ -114,7 +119,7 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Remap <C-f> and <C-b> to scroll float windows/popups
+" 支持 <C-b> 和 <C-f> 对浮动窗口/弹窗进行上下滚动
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
@@ -124,18 +129,20 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Use CTRL-S for selections ranges
-" Requires 'textDocument/selectionRange' support of language server
+" 使用 <C-s> 来选择一个范围
+" 需要语言服务器支持 'textDocument/selectionRange'
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer
+" 添加 `:Format` 命令来格式化所有文本，同时绑定快捷键
 command! -nargs=0 Format :call CocActionAsync('format')
+xmap <silent><C-l> :Format<CR> 
+nmap <silent><C-l> :Format<CR> 
 
-" Add `:Fold` command to fold current buffer
+" 添加 `:Fold` 命令以折叠当前文件内容
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" Add `:OR` command for organize imports of the current buffer
+" 添加 `:OR` 命令以自动整理当前文件的导入
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " 添加 (Neo)Vim 原生状态栏支持
@@ -146,20 +153,20 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " 支持自动刷新状态栏
 autocmd User CocStatusChange redrawstatus
 
-" Mappings for CoCList
-" Show all diagnostics
+""" 关于 CocList 的按键映射
+" 展示所有代码诊断信息
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
+" 管理扩展
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
+" 展示可用命令
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
+" 在当前文件查找标识符
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
+" 在整个工作区查找标识符
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item
+" 对下一个项目执行默认操作
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item
+" 对上一个项目执行默认操作
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
+" 恢复最新的 CocList 列表
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
