@@ -8,10 +8,7 @@ else
   exit 1
 fi
 
-sudo apt update -y
-sudo apt full-upgrade -y
-sudo apt autoclean -y
-sudo apt autoremove -y
-brew update
+sudo apt update -y && sudo apt full-upgrade -y
+sudo apt autoclean -y && sudo apt autoremove -y
 brew upgrade
 sudo do-release-upgrade
