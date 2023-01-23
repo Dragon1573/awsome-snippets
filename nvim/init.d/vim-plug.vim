@@ -2,6 +2,8 @@
 """ Vim-Plug 相关设置（https://github.com/junegunn/vim-plug#usage）
 
 call plug#begin()
+" 使用ssh链接更新插件
+" let g:plug_url_format = 'git@github.com:%s.git'
 
 "  目录树（https://github.com/preservim/nerdtree）
 Plug 'scrooloose/nerdtree'
