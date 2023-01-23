@@ -41,7 +41,7 @@
 1. 确保您的 NeoVim 版本在 `0.4.0` 以上
 2. 确保您安装了 Nodejs 14.14 及以上版本
 3. 普通 Linux 用户请在 `init.vim` 文件里使用带 `"` 的相对路径
-4. 下载和更新插件分别执行 `:PlugInstall` 和 `:PlugUpdate`， 清楚插件执行 `:PlugClear`
+4. 下载和更新插件分别执行 `:PlugInstall` 和 `:PlugUpdate` ， 清除插件执行 `:PlugClear`
 5. 使用 `:CocInstall` 前缀命令安装您需要的语言插件，比如 `:CocInstall coc-pyright`
 6. 如果需要用 SSH 来更新 vimPlug 在 `vim-plug.vim` 文件更改
 
