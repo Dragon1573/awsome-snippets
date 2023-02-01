@@ -11,18 +11,25 @@ function enable_clash
         set CLASH_PORT (grep 'mixed-port' /mnt/c/Users/Dragon1573/.config/clash/config.yaml | awk '{print $2}')
         set -gx http_proxy "http://$CLASH_SERVER:$CLASH_PORT/"
         set -gx https_proxy "http://$CLASH_SERVER:$CLASH_PORT/"
+
+        # 流编辑实现魔法
+        echo 'set -gx http_proxy' "http://$CLASH_SERVER:$CLASH_PORT" >> ~/.config/fish/conf.d/clash.fish
+        echo 'set -gx https_proxy' "http://$CLASH_SERVER:$CLASH_PORT" >> ~/.config/fish/conf.d/clash.fish
     end
     status_clash
 end
 
 function disable_clash
     if test "$PROXY_ENABLED" = "true"
-        # 去掉这个环境变量
         set -gx PROXY_ENABLED false
         sed -i '$s/true/false/g' ~/.config/fish/conf.d/clash.fish
+
         # 移除代理相关环境变量
         set -ge http_proxy
         set -ge https_proxy
+
+        # 流编辑实现魔法
+        sed -i '48,49d' ~/.config/fish/conf.d/clash.fish
     end
     status_clash
 end
@@ -37,4 +44,6 @@ function status_clash
 end
 
 # 当前状态
-set -gx PROXY_ENABLED false
+set -gx PROXY_ENABLED true
+set -gx http_proxy http://172.17.80.1:7890
+set -gx https_proxy http://172.17.80.1:7890
