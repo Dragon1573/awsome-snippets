@@ -10,14 +10,6 @@ end
 set -gx POETRY_HOME /opt/poetry
 set -gx PATH $PATH $POETRY_HOME/bin
 
-# Homebrew
-if test -d (brew --prefix)"/share/fish/completions"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-end
-if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-end
-
 # Enable TrueColor
 set -gx COLORTERM "truecolor"
 set -gx fish_term24bit 1
