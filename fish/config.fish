@@ -16,3 +16,4 @@ set -gx fish_term24bit 1
 
 # User's abbreviations
 abbr -ga lg lazygit
+abbr -ga neofetch 'yarn exec neowofetch'
