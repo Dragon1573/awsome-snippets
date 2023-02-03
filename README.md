@@ -20,6 +20,11 @@
 
 ## 其他特殊的配置文件
 
+### Aria2
+
+[Aria2](https://aria2.github.io/) 配置文件归档在 `aria2` 目录下，用户将此目录下的 `aria2.conf` 下载到本地，启动时使用
+`--conf-path` 指定使用此配置文件即可生效。
+
 ### Fish
 
 [Fish Shell](https://fishshell.com/) 配置文件归档在 `fish` 目录下，用户将此目录整个下载并重命名为 `~/.config/fish/` ，即可直接使用
