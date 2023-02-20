@@ -35,15 +35,9 @@ function disable_clash
 end
 
 function status_clash
-    echo -n "Proxy pass is "
-    if test "$PROXY_ENABLED" = "true"
-        echo -e (set_color brgreen)"Enabled"(set_color normal)
-    else if test "$PROXY_ENABLED" = "false"
-        echo -e (set_color brred)"Disabled"(set_color normal)
-    end
+    # 直接展示本配置文件「当前状态」段的内容
+    grep -A 4 '# 当前状态' ~/.config/fish/conf.d/clash.fish
 end
 
 # 当前状态
-set -gx PROXY_ENABLED true
-set -gx http_proxy http://172.17.80.1:7890
-set -gx https_proxy http://172.17.80.1:7890
+set -gx PROXY_ENABLED false
