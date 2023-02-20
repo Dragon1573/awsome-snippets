@@ -3,8 +3,8 @@
 "  需要使用 :CocInstall 手动安装如下插件
 "
 "  Shell 相关：coc-fish
-"  后端语言相关：coc-pyright coc-java coc-cmake coc-clangd
-"  前端语言相关：coc-markdownlint coc-json
+"  后端语言相关：coc-pyright coc-java coc-cmake coc-clangd coc-xmake
+"  前端语言相关：coc-markdownlint coc-json coc-yaml
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
