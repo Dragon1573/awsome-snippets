@@ -66,3 +66,10 @@ complete -c xmake -A -n '__fish_seen_subcommand_from build' -s j -l jobs -r -d '
 complete -c xmake -A -n '__fish_seen_subcommand_from build' -l linkjobs -r -d 'Set the number of parallel link jobs.'
 complete -c xmake -A -n '__fish_seen_subcommand_from build' -s w -l warning -d 'Enable the warnings output.'
 complete -c xmake -A -n '__fish_seen_subcommand_from build' -l files -x -d 'Build the given source files.'
+
+# check
+complete -c xmake -A -n '__fish_seen_subcommand_from check' -s l -l list -d 'Show all supported checkers list.'
+complete -c xmake -A -n '__fish_seen_subcommand_from check' -l info -x -d 'Show the given checker information.'
+
+# clean
+complete -c xmake -A -n '__fish_seen_subcommand_from clean' -s a -l all -d 'Clean all auto-generated files by xmake.'
