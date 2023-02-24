@@ -47,6 +47,12 @@ let g:airline#extensions#coc#enabled = 1
 "  开启 coc.nvim 状态栏显示
 let g:airline#extensions#coc#show_coc_status = 1
 
+"  为 NeoVim 添加 XMake 支持
+"  https://github.com/luzhlon/xmake.vim
+Plug 'luzhlon/x.vim'
+Plug 'luzhlon/qrun.vim'
+Plug 'luzhlon/xmake.vim'
+
 call plug#end()
 
 "  在 NeoVim 启动时自动安装缺失的插件
