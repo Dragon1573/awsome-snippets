@@ -11,6 +11,7 @@
 安装了相应的工具之后，将下列配置文件放置于指定的位置即可开箱即用！
 
 - CMake: `<workspace_folder>/CMakeLists.txt`
+- XMake: `<workspace_folder>/xmake.lua`
 
 ## 手动修改的配置文件
 
