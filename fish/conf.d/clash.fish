@@ -12,7 +12,7 @@ function enable_clash
         set -gx http_proxy "http://$CLASH_SERVER:$CLASH_PORT/"
         set -gx https_proxy "http://$CLASH_SERVER:$CLASH_PORT/"
 
-        # 流编辑实现魔法
+        # 流编辑添加两行配置
         echo 'set -gx http_proxy' "http://$CLASH_SERVER:$CLASH_PORT" >> ~/.config/fish/conf.d/clash.fish
         echo 'set -gx https_proxy' "http://$CLASH_SERVER:$CLASH_PORT" >> ~/.config/fish/conf.d/clash.fish
     end
@@ -21,23 +21,29 @@ end
 
 function disable_clash
     if test "$PROXY_ENABLED" = "true"
+        # 关闭代理
         set -gx PROXY_ENABLED false
-        sed -i '$s/true/false/g' ~/.config/fish/conf.d/clash.fish
 
         # 移除代理相关环境变量
         set -ge http_proxy
         set -ge https_proxy
 
-        # 流编辑实现魔法
-        sed -i '48,49d' ~/.config/fish/conf.d/clash.fish
+        # 流编辑删除末尾2行
+        sed -i '$d' ~/.config/fish/conf.d/clash.fish
+        sed -i '$d' ~/.config/fish/conf.d/clash.fish
+
+        # 持久化代理配置
+        sed -i '$s/true/false/g' ~/.config/fish/conf.d/clash.fish
     end
     status_clash
 end
 
 function status_clash
     # 直接展示本配置文件「当前状态」段的内容
-    grep -A 4 '# 当前状态' ~/.config/fish/conf.d/clash.fish
+    grep -A 4 -e '^# 当前状态$' ~/.config/fish/conf.d/clash.fish
 end
 
 # 当前状态
-set -gx PROXY_ENABLED false
+set -gx PROXY_ENABLED true
+set -gx http_proxy http://172.30.144.1:7890
+set -gx https_proxy http://172.30.144.1:7890
