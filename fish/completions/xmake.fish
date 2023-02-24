@@ -54,3 +54,15 @@ complete -c xmake -f -n __fish_xmake_complete_no_subcommand -a check -d 'Check t
 complete -c xmake -f -n __fish_xmake_complete_no_subcommand -a show -d 'Show the given project information.'
 complete -c xmake -f -n __fish_xmake_complete_no_subcommand -a watch -d 'Watch the project directories and run command.'
 complete -c xmake -f -n __fish_xmake_complete_no_subcommand -a macro -d 'Run the given macro.'
+
+### 子命令相关参数补全
+# build
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -s b -l build -d 'Build target. This is default building mode and optional.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -s r -l rebuild -d 'Rebuild the target.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -s a -l all -d 'Build all targets.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -s g -l group -r -d 'Build all targets of the given group. It support path pattern matching.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -l dry-run -d 'Dry run to build target.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -s j -l jobs -r -d 'Set the number of parallel compilation jobs. (default: 10)'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -l linkjobs -r -d 'Set the number of parallel link jobs.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -s w -l warning -d 'Enable the warnings output.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -l files -x -d 'Build the given source files.'
