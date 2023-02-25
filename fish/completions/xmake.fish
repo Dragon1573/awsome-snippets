@@ -228,3 +228,10 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l mrcflags -x -d '
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pc -r -F -d 'The Pascal Compiler'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pcld -r -F -d 'The Pascal Linker'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pcsh -r -F -d 'The Pascal Shared Library Linker'
+
+# Cuda SDK Configuration
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l cuda -r -F -d 'The Cuda SDK Directory (default: auto)'
+
+# Qt SDK Configuration
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l qt -r -F -d 'The Qt SDK Directory (default: auto)'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l qt_sdkver -x -d 'The Qt SDK Directory (default: auto)'
