@@ -84,16 +84,16 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l menu -d 'Configu
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s p -l plat -x -a 'linux android wasm haiku iphoneos cross msys bsd'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s p -l plat -x -a 'appletvos watchos macosx cygwin mingw windows'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s p -l plat -x -d 'Compile for the given platform. (default: auto)'
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'i386 x86_64 armv7 armv7s arm64-v8a mips mips64 mipsel mips64el' # linux
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'armeabi armeabi-v7a arm64-v8a x86 x86_64 mips mip64' # android
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a wasm32 # wasm
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'i386 x86_64' # haiku, msys, bsd, cygwin
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'arm64 x86_64' # iphoneos, macosx
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'i386 x86_64 arm arm64 mips mips64 riscv riscv64 s390x ppc ppc64 sh4' # cross
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'arm64 armv7 armv7s i386 x86_64' # appletvos
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'armv7k i386' # watchos
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'i386 x86_64 arm arm64' # mingw
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -a 'x86 x64 arm64' # windows
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from linux' -s a -l arch -x -a 'i386 x86_64 armv7 armv7s arm64-v8a mips mips64 mipsel mips64el'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from android' -s a -l arch -x -a 'armeabi armeabi-v7a arm64-v8a x86 x86_64 mips mip64'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from wasm' -s a -l arch -x -a wasm32
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from haiku msys bsd cygwin' -s a -l arch -x -a 'i386 x86_64'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from iphoneos macosx' -s a -l arch -x -a 'arm64 x86_64'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from cross' -s a -l arch -x -a 'i386 x86_64 arm arm64 mips mips64 riscv riscv64 s390x ppc ppc64 sh4'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from appletvos' -s a -l arch -x -a 'arm64 armv7 armv7s i386 x86_64'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from watchos' -s a -l arch -x -a 'armv7k i386'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from mingw' -s a -l arch -x -a 'i386 x86_64 arm arm64'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from windows' -s a -l arch -x -a 'x86 x64 arm64'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s a -l arch -x -d 'Compile for the given architecture. (default: auto)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s m -l mode -x -a 'debug release'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s m -l mode -x -d 'Compile for the given mode. (default: auto)'
