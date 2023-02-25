@@ -101,3 +101,8 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -s k -l kind -x -a 
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s k -l kind -x -d 'Compile for the given target kind. (default: static)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l host -x -d 'Set the current host environment. (default: linux)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l policies -x -d 'Set the project policies.'
+
+# Package Configuration
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l require -x -a 'yes no'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l require -x -d 'Require all dependent packages?'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pkg_searchdirs -r -F -d 'The search directories of the remote package.'
