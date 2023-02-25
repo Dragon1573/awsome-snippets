@@ -235,3 +235,16 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l cuda -r -F -d 'T
 # Qt SDK Configuration
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l qt -r -F -d 'The Qt SDK Directory (default: auto)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l qt_sdkver -x -d 'The Qt SDK Directory (default: auto)'
+
+# Vcpkg Configuration
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l vcpkg -r -F -d 'The Vcpkg Directory (default: auto)'
+
+# Android Configuration
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk -r -F -d 'The NDK Directory'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_sdkver -x -d 'The SDK Version for NDK (default: auto)'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l android_sdk -r -F -d 'The Android SDK Directory'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l build_toolver -x -d 'The Build Tool Version of Android SDK'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_stdcxx -x -a 'y n'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_stdcxx -x -d 'Use stdc++ library for NDK (default: y)'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_cxxstl -x -a 'c++_static c++_shared gnustl_static'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_cxxstl -x -d 'Use stdc++ library for NDK (default: y)'
