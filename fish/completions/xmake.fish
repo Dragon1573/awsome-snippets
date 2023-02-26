@@ -275,3 +275,18 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l trybuild -x -a '
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l trybuild -x -d 'Set the ccache directory.'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l tryconfigs -x -d 'Set the extra configurations of the third-party buildsystem for the try-build mode.'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s o -l buildir -r -F -d 'Set build directory. (default: build)'
+
+# create
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -s f -l force -d 'Force to create project in a non-empty directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -s l -l language -x -a 'vala c++ go rust fortran swift pascal'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -s l -l language -x -a 'dlang objc++ nim cuda objc c zig'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -s l -l language -x -d 'The project language (default: c++)'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from console' -s t -l template -x -a 'vala c++ go rust fortran swift pascal dlang objc++ nim cuda objc c zig'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from qt.console qt.quickapp qt.quickapp_static qt.shared qt.static qt.widgetapp qt.widgetapp_static' -s t -l template -x -a 'c++'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from shared' -s t -l template -x -a 'vala c++ fortran pascal dlang nim cuda c zig'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from static' -s t -l template -x -a 'vala c++ go rust fortran dlang nim cuda c zig'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from tbox.console tbox.shared tbox.static xmake.cli' -s t -l template -x -a 'c++ c'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from xcode.bundle xcode.framework' -s t -l template -x -a 'objc++ objc'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from xcode.iosapp xcode.iosapp_with_framework xcode.macapp xcode.macapp_with_framework' -s t -l template -x -a objc
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -s t -l template -x -d 'Select the project template id or name of the given language. (default: console)'
+complete -c xmake -A -n '__fish_seen_subcommand_from create' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
