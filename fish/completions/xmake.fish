@@ -372,3 +372,20 @@ complete -c xmake -A -n '__fish_seen_subcommand_from macro' -r -F -l import -d '
 complete -c xmake -A -n '__fish_seen_subcommand_from macro' -r -F -l export -d 'Export the given macro to file or directory.'
 complete -c xmake -A -n '__fish_seen_subcommand_from macro' -x -a '.' -d 'Run the anonymous macro'
 complete -c xmake -A -n '__fish_seen_subcommand_from macro' -x -a '..' -d 'Run the last command'
+
+# package
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -r -F -s o -l outputdir -d 'Set the output directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -s a -l all -d 'Package all targets.'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -x -s f -l format -a 'oldpkg local remote'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -x -s f -l format -d 'Set the package format. (default: local)'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -x -l homepage -d 'Set the homepage of package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -x -l description -d 'Set the description of package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -x -l url -d 'Set the url of remote package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -x -l version -d 'Set the version of remove package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -x -l shasum -d 'Set the sha256 or commit of remote package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from package' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
+
+# plugin
+complete -c xmake -A -n '__fish_seen_subcommand_from plugin' -s i -l install -d 'Install plugins.'
+complete -c xmake -A -n '__fish_seen_subcommand_from plugin' -s u -l update -d 'Update plugins.'
+complete -c xmake -A -n '__fish_seen_subcommand_from plugin' -s c -l clear -d 'Clear all installed plugins.'
