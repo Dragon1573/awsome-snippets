@@ -409,3 +409,25 @@ complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s a -l archs -
 complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -l lsp -a 'clangd cpptools ccls'
 complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -l lsp -d 'Set the LSP backend for compile_commands.'
 complete -c xmake -A -n '__fish_seen_subcommand_from project' -d 'Set the output directory.' -F
+
+# repo
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s a -l add -d 'Add the given remote repository url.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s r -l remove -d 'Remove the given remote repository url.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s u -l update -d 'Update all local repositories from the remote.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s c -l clear -d 'Clear all added repositories.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s l -l list -d 'List all added repositories.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s g -l global -d 'Save repository to global. (default: local)'
+
+# run
+complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -s d -l debug -d 'Run and debug the given target.'
+complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -s a -l all -d 'Run all targets.'
+complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -s g -l group -d 'Run all targets of the given group. It support path pattern matching.'
+complete -c xmake -A -n '__fish_seen_subcommand_from run' -r -F -s w -l workdir -d 'Work directory of running targets, default is folder of targetfile'
+complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -s j -l jobs -d 'Set the number of parallel compilation jobs. (default: 1)'
+complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -l detach -d 'Run targets in detached processes.'
+complete -c xmake -A -n '__fish_seen_subcommand_from run' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
+
+# show
+complete -c xmake -A -n '__fish_seen_subcommand_from show' -x -s l -l list -a 'platforms toolchains rules envs buildmodes themes architectures targets packages'
+complete -c xmake -A -n '__fish_seen_subcommand_from show' -x -s l -l list -d 'Show the values list of the given name.'
+complete -c xmake -A -n '__fish_seen_subcommand_from show' -x -s t -l target -d 'Show the information of the given target.'
