@@ -94,7 +94,7 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l export -r -F -d 
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l import -r -F -d 'Import configs from the given file.'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l menu -d 'Configure project with a menu-driven user interface.'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -n __xmake_is_in_project -s p -l plat -x -a '(xmake show -l platforms | string replace -ra "\e\[0m" "" | grep -P "\S+" -o)'
--complete -c xmake -A -n '__fish_seen_subcommand_from config' -s p -l plat -x -d 'Compile for the given platform. (default: auto)'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -s p -l plat -x -d 'Compile for the given platform. (default: auto)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from linux' -s a -l arch -x -a 'i386 x86_64 armv7 armv7s arm64-v8a mips mips64 mipsel mips64el'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from android' -s a -l arch -x -a 'armeabi armeabi-v7a arm64-v8a x86 x86_64 mips mip64'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -n '__fish_seen_subcommand_from wasm' -s a -l arch -x -a wasm32
