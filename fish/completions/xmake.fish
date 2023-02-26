@@ -53,6 +53,7 @@ complete -c xmake -f -n __xmake_complete_no_subcommand -a config -d 'Configure t
 complete -c xmake -f -n __xmake_complete_no_subcommand -a run -d 'Run the project target.'
 complete -c xmake -f -n __xmake_complete_no_subcommand -a package -d 'Package target.'
 complete -c xmake -f -n __xmake_complete_no_subcommand -a create -d 'Create a new project.'
+
 # 插件
 complete -c xmake -f -n __xmake_complete_no_subcommand -a doxygen -d 'Generate the doxygen document.'
 complete -c xmake -f -n __xmake_complete_no_subcommand -a repo -d 'Manage package repositories.'
@@ -76,6 +77,7 @@ complete -c xmake -A -n '__fish_seen_subcommand_from build' -s j -l jobs -r -d '
 complete -c xmake -A -n '__fish_seen_subcommand_from build' -l linkjobs -r -d 'Set the number of parallel link jobs.'
 complete -c xmake -A -n '__fish_seen_subcommand_from build' -s w -l warning -d 'Enable the warnings output.'
 complete -c xmake -A -n '__fish_seen_subcommand_from build' -l files -x -d 'Build the given source files.'
+complete -c xmake -A -n '__fish_seen_subcommand_from build' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
 
 # check
 complete -c xmake -A -n '__fish_seen_subcommand_from check' -s l -l list -d 'Show all supported checkers list.'
@@ -83,6 +85,7 @@ complete -c xmake -A -n '__fish_seen_subcommand_from check' -l info -x -d 'Show 
 
 # clean
 complete -c xmake -A -n '__fish_seen_subcommand_from clean' -s a -l all -d 'Clean all auto-generated files by xmake.'
+complete -c xmake -A -n '__fish_seen_subcommand_from clean' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
 
 # config
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s c -l clean -d 'Clean the cached user configs and detection cache.'
@@ -110,13 +113,14 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -s k -l kind -x -a 
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -s k -l kind -x -d 'Compile for the given target kind. (default: static)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l host -x -d 'Set the current host environment. (default: linux)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l policies -x -d 'Set the project policies.'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
 
-# Package Configuration
+# Package Configuration (config)
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l require -x -a 'yes no'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l require -x -d 'Require all dependent packages?'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pkg_searchdirs -r -F -d 'The search directories of the remote package.'
 
-# Cross Complation Configuration
+# Cross Complation Configuration (config)
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l cross -x -d 'Set cross toolchains prefix'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l target_os -x -d 'Set target os only for cross-complation'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l bin -r -F -d 'Set cross toolchains bin directory'
@@ -174,7 +178,6 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l toolchain -x -a 
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l toolchain -x -a clang-14 -d 'A C language family frontend for LLVM (14)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l toolchain -x -a gfortran -d 'GNU Fortran Programming Language Compiler'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l toolchain -x -a zig -d 'Zig Programming Language Compiler'
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -l toolchain -x -a gcc-11 -d 'GNU Compiler Collection (11)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l toolchain -x -d 'Set toolchain name'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l dc -r -F -d 'The Dlang Compiler'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l dcld -r -F -d 'The Dlang Linker'
@@ -238,17 +241,17 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pc -r -F -d 'The
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pcld -r -F -d 'The Pascal Linker'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l pcsh -r -F -d 'The Pascal Shared Library Linker'
 
-# Cuda SDK Configuration
+# Cuda SDK Configuration (config)
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l cuda -r -F -d 'The Cuda SDK Directory (default: auto)'
 
-# Qt SDK Configuration
+# Qt SDK Configuration (config)
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l qt -r -F -d 'The Qt SDK Directory (default: auto)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l qt_sdkver -x -d 'The Qt SDK Directory (default: auto)'
 
-# Vcpkg Configuration
+# Vcpkg Configuration (config)
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l vcpkg -r -F -d 'The Vcpkg Directory (default: auto)'
 
-# Android Configuration
+# Android Configuration (config)
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk -r -F -d 'The NDK Directory'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_sdkver -x -d 'The SDK Version for NDK (default: auto)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l android_sdk -r -F -d 'The Android SDK Directory'
@@ -256,4 +259,4 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l build_toolver -x
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_stdcxx -x -a 'y n'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_stdcxx -x -d 'Use stdc++ library for NDK (default: y)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_cxxstl -x -a 'c++_static c++_shared gnustl_static'
-complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_cxxstl -x -d 'Use stdc++ library for NDK (default: y)'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_cxxstl -x -d 'The stdc++ stl library for NDK'
