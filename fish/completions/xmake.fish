@@ -300,3 +300,50 @@ complete -c xmake -A -n '__fish_seen_subcommand_from format' -x -s s -l style -a
 complete -c xmake -A -n '__fish_seen_subcommand_from format' -x -s s -l style -d 'Set the path of .clang-format file, a coding style'
 complete -c xmake -A -n '__fish_seen_subcommand_from format' -l create -d 'Create a .clang-format file from a coding style'
 complete -c xmake -A -n '__fish_seen_subcommand_from format' -r -F -s f -d 'Set files path with pattern'
+
+# global
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -s c -l clean -d 'Clean the cached user configs and detection cache.'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l check -d 'Just ignore detection cache and force to check all, it will reserve the cached user configs.'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l menu -d 'Configure with a menu-driven user interface.'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -x -l theme -a 'dark powershell plain ninja emoji light default'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -x -l theme -d 'The theme name. (default: default)'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -r -F -l debugger -d 'The debugger program path. (default: auto)'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -r -F -l ccache -d 'Enable or disable the c/c++ compiler cache.'
+
+# Build Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -x -l build_warning -d 'Enable the warnings output by default when building.'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -r -F -l cachedir -d 'The global cache directory.'
+
+# Network Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -x -l network -a 'public private'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -x -l cachedir -d 'Set the network mode. (default: public)'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -x -l insecure-ssl -d 'Disable to check ssl certificates for downloading.'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -r -s x -l proxy -d 'Use proxy on given port. [protocol://]host[:port]'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -r -l proxy_hosts -d 'Only enable proxy for the given hosts list, it will enable all if be unset, and we can pass match pattern to list'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -r -F -l proxy_pac -d 'Set the auto proxy configuration file. (default: pac.lua)'
+
+# Package Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l pkg_searchdirs -r -F -d 'The search directories of the remote package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l pkg_cachedir -r -F -d 'The cache root directory of the remote package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l pkg_installdir -r -F -d 'The install root directory of the remote package.'
+
+# Cuda SDK Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l cuda -r -F -d 'The Cuda SDK Directory (default: auto)'
+
+# Qt SDK Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l qt -r -F -d 'The Qt SDK Directory (default: auto)'
+
+# Vcpkg Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l vcpkg -r -F -d 'The Vcpkg Directory (default: auto)'
+
+# Android Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l ndk -r -F -d 'The NDK Directory'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l ndk_sdkver -x -d 'The SDK Version for NDK (default: auto)'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l android_sdk -r -F -d 'The Android SDK Directory'
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l build_toolver -x -d 'The Build Tool Version of Android SDK'
+
+# Emscripten Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l emsdk -r -F -d 'The emsdk directory'
+
+# MingW Configuration (global)
+complete -c xmake -A -n '__fish_seen_subcommand_from global' -l mingw -r -F -d 'The MingW SDK Directory'
