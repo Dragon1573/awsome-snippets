@@ -44,6 +44,4 @@ function status_clash
 end
 
 # 当前状态
-set -gx PROXY_ENABLED true
-set -gx http_proxy http://172.30.144.1:7890
-set -gx https_proxy http://172.30.144.1:7890
+set -gx PROXY_ENABLED false
