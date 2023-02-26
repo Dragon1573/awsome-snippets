@@ -347,3 +347,28 @@ complete -c xmake -A -n '__fish_seen_subcommand_from global' -l emsdk -r -F -d '
 
 # MingW Configuration (global)
 complete -c xmake -A -n '__fish_seen_subcommand_from global' -l mingw -r -F -d 'The MingW SDK Directory'
+
+# install
+complete -c xmake -A -n '__fish_seen_subcommand_from install' -s o -l installdir -r -F -d 'Set the install directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from install' -x -s g -l group -d 'Install all targets of the given group. It support path pattern matching.'
+complete -c xmake -A -n '__fish_seen_subcommand_from install' -s a -l all -d 'Install all targets.'
+complete -c xmake -A -n '__fish_seen_subcommand_from install' -l admin -d 'Try to request administrator permission to install'
+complete -c xmake -A -n '__fish_seen_subcommand_from install' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
+
+# lua
+complete -c xmake -A -n '__fish_seen_subcommand_from lua' -s l -l list -d 'List all scripts.'
+complete -c xmake -A -n '__fish_seen_subcommand_from lua' -s c -l command -d 'Run script as command'
+complete -c xmake -A -n '__fish_seen_subcommand_from lua' -x -s d -l deserialize -d 'Deserialize arguments starts with given prefix'
+complete -c xmake -A -n '__fish_seen_subcommand_from lua' -x -d Scripts -a '(xmake lua -l | tail -n +2 | grep -P "\S+" -o)'
+
+# macro
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -s b -l begin -d 'Start to record macro.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -s e -l end -d 'Stop to record macro.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -l show -d 'Show the content of the given macro.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -s l -l list -d 'List all macros.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -s d -l delete -d 'Delete the given macro.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -s c -l clear -d 'Clear the all macros.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -r -F -l import -d 'Import the given macro file or directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -r -F -l export -d 'Export the given macro to file or directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -x -a '.' -d 'Run the anonymous macro'
+complete -c xmake -A -n '__fish_seen_subcommand_from macro' -x -a '..' -d 'Run the last command'
