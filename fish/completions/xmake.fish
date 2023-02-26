@@ -15,6 +15,15 @@ function __xmake_complete_no_subcommand
     return 0
 end
 
+function __xmake_is_in_project
+    # Check if the current working directory is a XMake project
+    if test (xmake show -l targets | grep "error")
+        return 1
+    else
+        return 0
+    end
+end
+
 ### 全局通用参数
 complete -c xmake -s q -l quiet -d 'Quiet operation.'
 complete -c xmake -s y -l yes -d 'Input yes by default if need user confirm.'
