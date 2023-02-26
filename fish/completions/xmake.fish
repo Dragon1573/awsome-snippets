@@ -290,3 +290,13 @@ complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_sub
 complete -c xmake -A -n '__fish_seen_subcommand_from create' -n '__fish_seen_subcommand_from xcode.iosapp xcode.iosapp_with_framework xcode.macapp xcode.macapp_with_framework' -s t -l template -x -a objc
 complete -c xmake -A -n '__fish_seen_subcommand_from create' -s t -l template -x -d 'Select the project template id or name of the given language. (default: console)'
 complete -c xmake -A -n '__fish_seen_subcommand_from create' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
+
+# doxygen
+complete -c xmake -A -n '__fish_seen_subcommand_from doxygen' -r -F -s o -l outputdir -d 'Set the output directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from doxygen' -d 'Set the source code directory. (default: src)'
+
+# format
+complete -c xmake -A -n '__fish_seen_subcommand_from format' -x -s s -l style -a 'LLVM Google Chromium Mozilla Webkit'
+complete -c xmake -A -n '__fish_seen_subcommand_from format' -x -s s -l style -d 'Set the path of .clang-format file, a coding style'
+complete -c xmake -A -n '__fish_seen_subcommand_from format' -l create -d 'Create a .clang-format file from a coding style'
+complete -c xmake -A -n '__fish_seen_subcommand_from format' -r -F -s f -d 'Set files path with pattern'
