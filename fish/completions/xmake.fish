@@ -418,6 +418,29 @@ complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s c -l clear -
 complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s l -l list -d 'List all added repositories.'
 complete -c xmake -A -n '__fish_seen_subcommand_from project' -f -s g -l global -d 'Save repository to global. (default: local)'
 
+# require
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -s c -l clean -d 'Clear all package caches and uninstall all not-referenced packages.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -x -l clean_modes -d 'Set the modes of cleaning packages.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -s f -l force -d 'Force to reinstall all package dependencies.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -x -s j -l jobs -d 'Set the number of parallel compilation jobs. (default: 10)'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -x -l linkjobs -d 'Set the number of parallel link jobs.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l shallow -d 'Does not install dependent packages.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l build -d 'Always build and install packages from source.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -s l -l list -d 'List all package dependencies in project.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l scan -d 'Scan the given or all installed packages.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l info -d 'Show the given package info.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l fetch -d 'Fetch the library info of given package.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -x -l fetch_modes -d 'Set the modes of fetching packages.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -s s -l search -d 'List all package dependencies in project.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l upgrade -d 'Upgrade the installed packages.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l uninstall -d 'Uninstall the installed packages.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l export -d 'Export the installed packages and their dependencies.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -l import -d 'Import the installed packages and their dependencies.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -r -F -l packagedir -d 'Set the packages directory for exporting and importing. (default: packages)'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -r -F -l debugdir -d 'Set the source directory of the current package for debugging.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -r -F -l extra -d 'Set the source directory of the current package for debugging.'
+complete -c xmake -A -n '__fish_seen_subcommand_from require' -f -a 'zlib tbox' -d Requirements
+
 # run
 complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -s d -l debug -d 'Run and debug the given target.'
 complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -s a -l all -d 'Run all targets.'
@@ -426,6 +449,26 @@ complete -c xmake -A -n '__fish_seen_subcommand_from run' -r -F -s w -l workdir 
 complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -s j -l jobs -d 'Set the number of parallel compilation jobs. (default: 1)'
 complete -c xmake -A -n '__fish_seen_subcommand_from run' -x -l detach -d 'Run targets in detached processes.'
 complete -c xmake -A -n '__fish_seen_subcommand_from run' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
+
+# service
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l start -d 'Start daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l restart -d 'Restart daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l stop -d 'Stop daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l connect -d 'Stop daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l reconnect -d 'Reconnect current project to the remote daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l disconnect -d 'Disconnect current project in the remote daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -n '__fish_contains_opt start connect' -f -l remote -d 'Start or connect the remote build service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -n '__fish_contains_opt start connect' -f -l distcc -d 'Start or connect the distributed build service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l ccache -d 'Start or connect the remote c/c++ cache service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l sync -d 'Sync current project files in the remote daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -F -l pull -d 'Pull the given file or directory in the remote daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l clean -d 'Clean current project files in the remote daemon service.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -x -l add-user -a '(__fish_complete_users)'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -x -l add-user -d 'Add user in the server.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -x -l rm-user -a '(__fish_complete_users)'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -x -l rm-user -d 'Remove user in the server.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l get-token -d 'Generate a new token in the server.'
+complete -c xmake -A -n '__fish_seen_subcommand_from service' -f -l status -d 'Show service status if the daemon service has been started.'
 
 # show
 complete -c xmake -A -n '__fish_seen_subcommand_from show' -x -s l -l list -a 'platforms toolchains rules envs buildmodes themes architectures targets packages'
