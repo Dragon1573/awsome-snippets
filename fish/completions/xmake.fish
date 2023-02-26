@@ -259,3 +259,19 @@ complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_stdcxx -x -a
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_stdcxx -x -d 'Use stdc++ library for NDK (default: y)'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_cxxstl -x -a 'c++_static c++_shared gnustl_static'
 complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ndk_cxxstl -x -d 'The stdc++ stl library for NDK'
+
+# Emscripten Configuration (config)
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l emsdk -r -F -d 'The emsdk directory'
+
+# MingW Configuration (config)
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l mingw -r -F -d 'The MingW SDK Directory'
+
+# Other Configuration (config)
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l debugger -x -d 'Set debugger (default: auto)'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ccache -x -a 'y n'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l ccache -x -d 'Set the ccache directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l trybuild -x -a 'auto make autoconf cameke scons meson'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l trybuild -x -a 'bazel ninja msbuild xcode build ndkbuild xrepo'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l trybuild -x -d 'Set the ccache directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -l tryconfigs -x -d 'Set the extra configurations of the third-party buildsystem for the try-build mode.'
+complete -c xmake -A -n '__fish_seen_subcommand_from config' -s o -l buildir -r -F -d 'Set build directory. (default: build)'
