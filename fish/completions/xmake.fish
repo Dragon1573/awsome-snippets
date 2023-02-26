@@ -431,3 +431,22 @@ complete -c xmake -A -n '__fish_seen_subcommand_from run' -n __xmake_is_in_proje
 complete -c xmake -A -n '__fish_seen_subcommand_from show' -x -s l -l list -a 'platforms toolchains rules envs buildmodes themes architectures targets packages'
 complete -c xmake -A -n '__fish_seen_subcommand_from show' -x -s l -l list -d 'Show the values list of the given name.'
 complete -c xmake -A -n '__fish_seen_subcommand_from show' -x -s t -l target -d 'Show the information of the given target.'
+
+# uninstall
+complete -c xmake -A -n '__fish_seen_subcommand_from uninstall' -r -F -l installdir -d 'Set the install directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from uninstall' -x -s p -l prefix -d 'Set the prefix directory.'
+complete -c xmake -A -n '__fish_seen_subcommand_from uninstall' -l admin -d 'Try to request administrator permission to uninstall'
+complete -c xmake -A -n '__fish_seen_subcommand_from uninstall' -n __xmake_is_in_project -x -d Targets -a "(xmake show -l targets | string replace -ra '\e\[0m' '' | grep -P '\S+' -o)"
+
+# update
+complete -c xmake -A -n '__fish_seen_subcommand_from update' -f -l uninstall -d 'Uninstall the current xmake program.'
+complete -c xmake -A -n '__fish_seen_subcommand_from update' -f -s s -l scriptonly -d 'Update scripts only.'
+complete -c xmake -A -n '__fish_seen_subcommand_from update' -f -l integrate -d 'Integrate xmake with default shell.'
+complete -c xmake -A -n '__fish_seen_subcommand_from update' -f -s f -l force -d 'Force to update and reinstall the given version.'
+
+# watch
+complete -c xmake -A -n '__fish_seen_subcommand_from watch' -x -s c -l commands -d 'Run the multiple commands instead of the default build command.'
+complete -c xmake -A -n '__fish_seen_subcommand_from watch' -r -F -s s -l script -d 'Run the given lua script file.'
+complete -c xmake -A -n '__fish_seen_subcommand_from watch' -r -F -s d -l watchdirs -d 'Set the given recursive watch directories, the project directories will be watched by default.'
+complete -c xmake -A -n '__fish_seen_subcommand_from watch' -r -F -s p -l plaindirs -d 'Set the given non-recursive watch directories, the project directories will be watched by default.'
+complete -c xmake -A -n '__fish_seen_subcommand_from watch' -r -F -s r -l run -d 'Build and run target.'
