@@ -389,3 +389,23 @@ complete -c xmake -A -n '__fish_seen_subcommand_from package' -n __xmake_is_in_p
 complete -c xmake -A -n '__fish_seen_subcommand_from plugin' -s i -l install -d 'Install plugins.'
 complete -c xmake -A -n '__fish_seen_subcommand_from plugin' -s u -l update -d 'Update plugins.'
 complete -c xmake -A -n '__fish_seen_subcommand_from plugin' -s c -l clear -d 'Clear all installed plugins.'
+
+# project
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a 'make cmake ninja compile_flags'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a xmakefile -d 'makefile with xmake'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a xcode -d 'need cmake'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a compile_commands -d 'clang compilation database with json format'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a vs -d 'auto detect'
+for year in (seq 2002 2022)
+    complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a "vs$year"
+end
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a vsxmake -d 'auto detect'
+for year in (seq 2010 2022)
+    complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -a "vsxmake$year"
+end
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s k -l kind -d 'Install plugins.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s m -l modes -d 'Set the project modes.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -s a -l archs -d 'Set the project archs.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -l lsp -a 'clangd cpptools ccls'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -x -l lsp -d 'Set the LSP backend for compile_commands.'
+complete -c xmake -A -n '__fish_seen_subcommand_from project' -d 'Set the output directory.' -F
