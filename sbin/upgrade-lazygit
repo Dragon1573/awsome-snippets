@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# 自动升级 lazygit
+
+function run_upgrade {
+  # 正式执行升级任务
+  echo -e "\e[33m任务详情：$1 ==> $2\e[0m"
+  if [ ! -d "/usr/local/lazygit" ]; then
+    sudo mkdir -pv /usr/local/lazygit
+  fi
+  sudo rm -rvf "/usr/local/lazygit/*"
+  if [ -f "/tmp/lazygit_linux64_$1.tar.gz" ]; then
+    sudo rm -rvf "/tmp/lazygit_linux64_$1.tar.gz"
+  fi
+  if [ ! -f "/tmp/lazygit_linux64_$2.tar.gz" ]; then
+    sudo wget -O "/tmp/lazygit_linux64_$2.tar.gz" \
+      "https://github.com/jesseduffield/lazygit/releases/download/v$2/lazygit_$2_Linux_x86_64.tar.gz"
+  fi
+  sudo tar -zxvf "/tmp/lazygit_linux64_$2.tar.gz" -C "/usr/local/lazygit/"
+  sudo rm -rvf "/tmp/lazygit_linux64_$2.tar.gz"
+  return $?
+}
+
+# 权限检查
+CURRENT_GROUPS="$(groups $USER)"
+if [[ "$CURRENT_GROUPS" == *"root"* || "$CURRENT_GROUPS" == *"sudo"* ]]; then
+  :
+else
+  echo -e "\e[31m本权限需要超级用户权限！\e[0m"
+  exit 1
+fi
+
+# 检查 lazygit 版本
+echo -e "\e[33m正在查询最新版本，请稍候...\e[0m"
+latest="$(curl -sSL https://api.github.com/repos/jesseduffield/lazygit/releases | jq -r '.[0].tag_name' | sed 's/v//')"
+current="$(lazygit --version | sed -r 's/.*version=(.*), os.*/\1/')"
+if [ -z "$current" ]; then
+  echo -e "\e[31m未安装 lazygit ！"
+  exit 1
+elif [ "$latest" == "$current" ]; then
+  # 版本匹配
+  echo -e "\e[32mlazygit 已经是最新版本！\e[0m"
+  exit 0
+else
+  # 版本不匹配
+  echo -e "\e[33m检测到新版本！\e[0m"
+  run_upgrade "$current" "$latest"
+  exit $?
+fi
