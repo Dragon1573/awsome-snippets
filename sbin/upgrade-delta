@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# 自动升级 git-delta
+
+function run_upgrade {
+  # 正式执行升级任务
+  echo -e "\e[33m任务详情：$1 ==> $2\e[0m"
+  if [ -n "$3" ] || [ ! -f "/tmp/git-delta_$2_amd64.deb" ]; then
+    sudo wget -O "/tmp/git-delta_$2_amd64.deb" \
+      "https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_$2_amd64.deb" \
+      && sudo apt install -y "/tmp/git-delta_$2_amd64.deb" \
+      && sudo rm -rvf "/tmp/git-delta_$2_amd64.deb"
+  fi
+  return $?
+}
+
+# 权限检查
+CURRENT_GROUPS="$(groups $USER)"
+if [[ "$CURRENT_GROUPS" == *"root"* || "$CURRENT_GROUPS" == *"sudo"* ]]; then
+  :
+else
+  echo -e "\e[31m本权限需要超级用户权限！\e[0m"
+  exit 1
+fi
+
+# 检查 lazygit 版本
+echo -e "\e[33m正在查询最新版本，请稍候...\e[0m"
+latest="$(curl -sSL https://api.github.com/repos/dandavison/delta/releases | jq -r '.[0].tag_name' | sed 's/v//')"
+if [ "$1" == "--emergency" ]; then
+    echo -e "\e[31m紧急重装最新版本！\e[0m"
+    run_upgrade "Broken" "$latest" "--emergency"
+    exit $?
+fi
+current="$(delta --version | grep -o -E '(([0-9]|([1-9]([0-9]*))).){2}([0-9]|([1-9]([0-9]*)))')"
+if [ -z "$current" ]; then
+  echo -e "\e[31m未安装 git-delta！"
+  exit 1
+elif [ "$latest" == "$current" ]; then
+  # 版本匹配
+  echo -e "\e[32mgit-delta 已经是最新版本！\e[0m"
+  exit 0
+else
+  # 版本不匹配
+  echo -e "\e[33m检测到新版本！\e[0m"
+  run_upgrade "$current" "$latest"
+  exit $?
+fi
