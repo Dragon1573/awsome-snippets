@@ -11,12 +11,12 @@ function run_upgrade {
   if [ -f "/tmp/lazygit_linux64_$1.tar.gz" ]; then
     sudo rm -rvf "/tmp/lazygit_linux64_$1.tar.gz"
   fi
-  if [ ! -f "/tmp/lazygit_linux64_$2.tar.gz" ]; then
+  if [ -n "$3" ] || [ ! -f "/tmp/lazygit_linux64_$2.tar.gz" ]; then
     sudo wget -O "/tmp/lazygit_linux64_$2.tar.gz" \
-      "https://github.com/jesseduffield/lazygit/releases/download/v$2/lazygit_$2_Linux_x86_64.tar.gz"
+      "https://github.com/jesseduffield/lazygit/releases/download/v$2/lazygit_$2_Linux_x86_64.tar.gz" \
+      && sudo tar -zxvf "/tmp/lazygit_linux64_$2.tar.gz" -C "/usr/local/lazygit/" \
+      && sudo rm -rvf "/tmp/lazygit_linux64_$2.tar.gz"
   fi
-  sudo tar -zxvf "/tmp/lazygit_linux64_$2.tar.gz" -C "/usr/local/lazygit/"
-  sudo rm -rvf "/tmp/lazygit_linux64_$2.tar.gz"
   return $?
 }
 
@@ -32,6 +32,11 @@ fi
 # 检查 lazygit 版本
 echo -e "\e[33m正在查询最新版本，请稍候...\e[0m"
 latest="$(curl -sSL https://api.github.com/repos/jesseduffield/lazygit/releases | jq -r '.[0].tag_name' | sed 's/v//')"
+if [ "$1" == "--emergency" ]; then
+    echo -e "\e[31m紧急修复最新版本！\e[0m"
+    run_upgrade "Broken" "$latest" "--emergency"
+    exit $?
+fi
 current="$(lazygit --version | sed -r 's/.*version=(.*), os.*/\1/')"
 if [ -z "$current" ]; then
   echo -e "\e[31m未安装 lazygit ！"

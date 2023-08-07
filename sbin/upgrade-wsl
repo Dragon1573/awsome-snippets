@@ -8,6 +8,6 @@ else
   exit 1
 fi
 
-sudo apt update -y && sudo apt full-upgrade -y
-sudo apt autoclean -y && sudo apt autoremove -y
-sudo do-release-upgrade
+sudo apt update -y && sudo apt full-upgrade -y \
+&& sudo apt autoclean -y && sudo apt autoremove -y \
+&& sudo do-release-upgrade

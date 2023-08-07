@@ -11,12 +11,12 @@ function run_upgrade {
   if [ -f "/tmp/edgedriver_linux64_$1.zip" ]; then
     sudo rm -rvf "/tmp/edgedriver_linux64_$1.zip"
   fi
-  if [ ! -f "/tmp/edgedriver_linux64_$2.zip" ]; then
+  if [ -n "$3" ] || [ ! -f "/tmp/edgedriver_linux64_$2.zip" ]; then
     sudo wget -O "/tmp/edgedriver_linux64_$2.zip" \
-      "https://msedgedriver.azureedge.net/$2/edgedriver_linux64.zip"
+      "https://msedgedriver.azureedge.net/$2/edgedriver_linux64.zip" \
+      && sudo unzip "/tmp/edgedriver_linux64_$2.zip" -d "/opt/microsoft/msedgedriver/" \
+      && sudo rm -rvf "/tmp/edgedriver_linux64_$2.zip"
   fi
-  sudo unzip "/tmp/edgedriver_linux64_$2.zip" -d "/opt/microsoft/msedgedriver/"
-  sudo rm -rvf "/tmp/edgedriver_linux64_$2.zip"
   return $?
 }
 
@@ -31,6 +31,10 @@ fi
 
 # 检查 Edge & Driver 版本
 stable="$(microsoft-edge-stable --version 2> /dev/null | awk '{print $3}')"
+if [ "$1" == "--emergency" ]; then
+    echo -e "\e[31m紧急重装驱动程序！\e[0m"
+    run_upgrade "Broken" "$stable" "--emergency"
+fi
 driver="$(/opt/microsoft/msedgedriver/msedgedriver --version 2> /dev/null | awk '{print $4}')"
 if [ -z "$stable" ]; then
   echo -e "\e[31m未安装 Microsoft Edge Stable ！"
