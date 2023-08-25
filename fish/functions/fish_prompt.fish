@@ -29,7 +29,7 @@ function fish_prompt
     # 权限标记符
     set_color -o
     if fish_is_root_user
-        echo -n (set_color "#FF9300")'# '
+        echo -n (set_color "#FF6600")'# '
     else
         echo -n (set_color brgreen)'$ '
     end
