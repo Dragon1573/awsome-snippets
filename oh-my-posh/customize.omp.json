@@ -8,24 +8,13 @@
       "alignment": "left",
       "segments": [
         {
-          "type": "root",
-          "style": "plain",
-          "foreground": "p:red",
-          "template": "!"
-        },
-        {
           "type": "time",
           "style": "plain",
-          "foreground": "p:pink",
+          "foreground": "p:blue",
+          "template": "{{ .CurrentDate | date .Format }} ",
           "properties": {
             "time_format": "15:04:05"
           }
-        },
-        {
-          "type": "os",
-          "style": "plain",
-          "foreground": "p:os",
-          "template": "{{.Icon}} "
         },
         {
           "type": "python",
@@ -34,18 +23,12 @@
           "template": "{{ if .Error }}{{ .Error }}{{ else }}({{ if .Venv }}{{ .Venv }}{{ else }}cp{{ .Major }}{{ .Minor }}{{ end }}){{ end }} "
         },
         {
-          "type": "session",
-          "style": "plain",
-          "foreground": "p:blue",
-          "template": "{{ .UserName }} "
-        },
-        {
           "type": "path",
           "style": "plain",
           "foreground": "p:pink",
           "template": "{{ path .Path .Location }} ",
           "properties": {
-            "folder_icon": "..\ue5fe..",
+            "folder_icon": "...",
             "home_icon": "~",
             "style": "agnoster_short"
           }
@@ -54,13 +37,14 @@
           "type": "git",
           "style": "plain",
           "foreground": "p:lavender",
-          "template": "{{ .HEAD }} ",
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
           "properties": {
             "branch_icon": "\ue725 ",
             "cherry_pick_icon": "\ue29b ",
             "commit_icon": "\uf417 ",
-            "fetch_status": false,
-            "fetch_upstream_icon": false,
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true,
             "merge_icon": "\ue727 ",
             "no_commits_icon": "\uf0c3 ",
             "rebase_icon": "\ue728 ",
@@ -88,14 +72,16 @@
             "green"
           ],
           "properties": {
-           "status_template": "{{ if ne .Code 0 }}{{ .Code | hresult }}{{ end }}"
+            "status_template": "{{ if ne .Code 0 }}{{ .Code | hresult }}{{ end }}"
           }
         },
         {
           "type": "text",
           "style": "plain",
-          "foreground": "p:closer",
-          "template": "\uf105"
+          "foreground_templates": [
+            "{{ if .Root }}p:red{{ else }}p:closer{{ end }}"
+          ],
+          "template": "pwsh{{ if .Root }}#{{ else }}>{{ end }}"
         }
       ]
     }
