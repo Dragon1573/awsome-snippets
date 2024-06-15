@@ -42,7 +42,7 @@
 
 ### NeoVim
 
-[NeoVim](https://neovim.io/) 配置文件统一归档在 `nvim` 目录之下，用户将此目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
+[NeoVim](https://neovim.io/) 配置文件统一归档在 `nvim` 目录之下，同时区分 Linux Fish Shell 与 Windows Powershell Core 版本。用户将对应目录整个下载并重命名为 `~/.config/nvim/` 后，还需要执行如下操作：
 
 1. 确保您的 NeoVim 版本在 `0.4.0` 以上
 2. 确保您安装了 Nodejs 14.14 及以上版本
@@ -50,6 +50,7 @@
 4. 下载和更新插件分别执行 `:PlugInstall` 和 `:PlugUpdate` ， 清除插件执行 `:PlugClear`
 5. 使用 `:CocInstall` 前缀命令安装您需要的语言插件，比如 `:CocInstall coc-pyright`
 6. 如果需要用 SSH 来更新 vimPlug 在 `vim-plug.vim` 文件更改
+7. 如果你使用 Windows ，请在 `$env:LOCALAPPDATA` 下创建符号链接 `nvim/` 以指向 `~/.config/nvim/`
 
 ### Oh My Posh
 
