@@ -1,98 +1,110 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 2,
-  "final_space": true,
+  "palette": {
+    "blue": "#8CAAEE",
+    "gold": "#DAA520",
+    "green": "#00ff00",
+    "lavender": "#BABBF1",
+    "os": "#ACB0BE",
+    "pink": "#FFC0CB",
+    "red": "#ff8888"
+  },
+  "shell_integration": true,
   "blocks": [
     {
       "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "time",
-          "style": "plain",
-          "foreground": "p:blue",
-          "template": "{{ .CurrentDate | date .Format }} ",
           "properties": {
             "time_format": "15:04:05"
-          }
+          },
+          "style": "plain",
+          "template": "{{ .CurrentDate | date .Format }} ",
+          "foreground": "p:blue",
+          "type": "time"
         },
         {
-          "type": "python",
           "style": "plain",
+          "template": "{{ if .Error }}Missing {{ else }}({{ if .Venv }}{{ .Venv }}{{ else }}py{{ .Major }}{{ .Minor }}{{ end }}) {{ end }}",
           "foreground": "p:gold",
-          "template": "{{ if .Error }}{{ .Error }}{{ else }}({{ if .Venv }}{{ .Venv }}{{ else }}cp{{ .Major }}{{ .Minor }}{{ end }}){{ end }} "
+          "type": "python"
         },
         {
-          "type": "path",
-          "style": "plain",
-          "foreground": "p:pink",
-          "template": "{{ path .Path .Location }} ",
           "properties": {
             "folder_icon": "...",
             "home_icon": "~",
             "style": "agnoster_short"
-          }
+          },
+          "style": "plain",
+          "template": "{{ path .Path .Location }} ",
+          "foreground": "p:pink",
+          "type": "path"
         },
         {
-          "type": "git",
-          "style": "plain",
-          "foreground": "p:lavender",
-          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
           "properties": {
-            "branch_icon": "\ue725 ",
-            "cherry_pick_icon": "\ue29b ",
-            "commit_icon": "\uf417 ",
-            "fetch_status": true,
             "fetch_stash_count": true,
-            "fetch_upstream_icon": true,
-            "merge_icon": "\ue727 ",
-            "no_commits_icon": "\uf0c3 ",
-            "rebase_icon": "\ue728 ",
-            "revert_icon": "\uf0e2 ",
-            "tag_icon": "\uf412 "
-          }
+            "fetch_status": true,
+            "fetch_upstream_icon": false
+          },
+          "style": "plain",
+          "template": "{{ if .Env.POSH_GIT_STRING }}{{ .Env.POSH_GIT_STRING }} {{ end }}",
+          "foreground": "p:lavender",
+          "type": "git"
         },
         {
-          "type": "executiontime",
-          "style": "plain",
-          "foreground": "p:blue",
-          "template": "{{ .FormattedMs }} ",
           "properties": {
-            "threshold": 500,
+            "always_enabled": true,
             "style": "austin",
-            "always_enabled": true
-          }
+            "threshold": 500
+          },
+          "style": "plain",
+          "template": "{{ .FormattedMs }} ",
+          "foreground": "p:blue",
+          "type": "executiontime"
         },
         {
-          "type": "status",
-          "style": "plain",
-          "template": "{{ .String }} ",
-          "foreground_templates": [
-            "{{ if .Error }}red{{ end }}",
-            "green"
-          ],
           "properties": {
             "status_template": "{{ if ne .Code 0 }}{{ .Code | hresult }}{{ end }}"
-          }
+          },
+          "style": "plain",
+          "template": "{{ .String }} ",
+          "type": "status",
+          "foreground_templates": [
+            "{{ if .Error }}p:red{{ end }}",
+            "green"
+          ]
         },
         {
-          "type": "text",
           "style": "plain",
+          "template": "pwsh",
+          "type": "text",
+          "foreground": "p:pink"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "style": "plain",
+          "template": "{{ if .Root }}#{{ else }}${{ end }}",
+          "type": "text",
           "foreground_templates": [
-            "{{ if .Root }}p:red{{ else }}p:closer{{ end }}"
-          ],
-          "template": "pwsh{{ if .Root }}#{{ else }}>{{ end }}"
+            "{{ if .Root }}p:red{{ else }}p:green{{ end }}"
+          ]
         }
       ]
     }
   ],
-  "palette": {
-    "blue": "#8CAAEE",
-    "closer": "p:os",
-    "lavender": "#BABBF1",
-    "os": "#ACB0BE",
-    "pink": "#FFC0CB",
-    "gold": "#DAA520",
-    "red": "#ff4040"
-  }
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground_templates": [
+      "{{ if .Root }}p:red{{ else }}p:green{{ end }}"
+    ]
+  },
+  "version": 3,
+  "final_space": true
 }
